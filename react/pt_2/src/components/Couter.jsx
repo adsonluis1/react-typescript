@@ -7,9 +7,9 @@ function Couter (){
     return (
         <div>
            <h1>conta: {couter}</h1>
-           <form>
+           
             <button id="btn" onClick={()=> setCouter(couter + 1)}>aumentar</button>
-           </form>
+           
         </div>
     )
 
