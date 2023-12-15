@@ -6,16 +6,18 @@ import Plaseholder from './components/Plaseholder'
 import PropsDesustrurada from './components/PropsDesustrurada'
 import './App.css'
 import Props from './components/Props'
+import Couter from './components/Couter'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-     <Wellcome />
+     {/* <Wellcome />
     <Plaseholder />
     <Props goleiro='pedro' zaga1='marquinhos' zaga2='caça rato' latera1='maicon' latera2='douglas'/>
-    <PropsDesustrurada nome={'lola'} idade={3} raca={'pincher'}/>
+    <PropsDesustrurada nome={'lola'} idade={3} raca={'pincher'}/> */}
+    <Couter />
     </>
   )
 }

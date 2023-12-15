@@ -63,6 +63,12 @@ button:focus-visible {
   padding: 5px;
 }
 
+#btn{
+  background-color: #1a1a1a;
+  border: solid 1px white;
+  padding: 5px;
+  margin-top: 10px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
