@@ -10,6 +10,7 @@ import Couter from './components/Couter'
 import Login from './components/Login'
 import LoginT from './components/LoginT'
 import Paifuncao from './components/Paifuncao'
+import RenderCondicional from './components/RenderCondicional'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,8 +23,9 @@ function App() {
     <PropsDesustrurada nome={'lola'} idade={3} raca={'pincher'}/> 
     <Couter /> 
     <Login />
-    LoginT /> */}
-    <Paifuncao />
+    LoginT /> 
+    <Paifuncao /> */}
+    <RenderCondicional logado={false}/>
     </>
   )
 }
