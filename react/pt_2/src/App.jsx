@@ -12,6 +12,7 @@ import LoginT from './components/LoginT'
 import Paifuncao from './components/Paifuncao'
 import RenderCondicional from './components/RenderCondicional'
 import LoginT2 from './components/LotingT2'
+import Ex1 from './ex/Ex1'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -25,8 +26,9 @@ function App() {
     <Login />
     LoginT /> 
     <Paifuncao />  
-    <RenderCondicional logado={true}/> */}
-    <LoginT2 />
+    <RenderCondicional logado={true}/> 
+    <LoginT2 /> */}
+    <Ex1 />
     </>
   )
 }
