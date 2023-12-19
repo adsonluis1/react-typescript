@@ -4,17 +4,22 @@ function ListTask ({list}){
 
     
     return (
-        <ul>
-            {(list.map((evt)=>{
-                <h2>{evt}</h2>
-            }))}
-        </ul>
+       <ul>
+            {list.map((evt)=>(
+                <li key={evt.id}>{evt.text}</li>
+            ))}
+       </ul>
     )
 }
 
+const tarefas = [
+    {text:'limpar o quarto', id:1},
+    {text:'comer' , id:2}, 
+    {text:'tomar banho' , id:3}]
+
 function Ex1 (){
     return (
-       <ListTask list={['dad', 'hehe']}/>
+       <ListTask list={tarefas}/>
     )
 }
 
