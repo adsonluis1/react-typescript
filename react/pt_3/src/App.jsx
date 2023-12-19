@@ -6,8 +6,8 @@ function App() {
   
   return (
     <>
-      {/* <UseEfect /> */}
-      <Timer />
+      {/* <UseEfect /> 
+      <Timer /> */}
     </>
   )
 }
