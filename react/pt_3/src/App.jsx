@@ -1,4 +1,5 @@
 import './App.css'
+import PropChild from './components/PropChild'
 import Timer from './components/Timer'
 import TimerT from './components/TimerT'
 import UseEfect from './components/UseEfect'
@@ -12,8 +13,12 @@ function App() {
       {/* <UseEfect /> 
       <Timer /> 
       <TimerT /> 
-      <UserReducer /> */}
-      <UseReducerT />
+      <UserReducer />
+      <UseReducerT /> */}
+      <PropChild>
+          <Timer />
+          <p>fim</p>
+      </PropChild>
     </>
   )
 }
