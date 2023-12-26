@@ -1,0 +1,33 @@
+body{
+  background-color: white;
+  color: black;
+}
+
+main{
+  position: absolute;
+  top: 0px;
+}
+
+input[type=text]{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  width: 80%;
+}
+
+input[type=button]{
+  background-color: orange;
+  border: 1px solid black;
+  width: 18%;
+  margin-left: 3px;
+}
+
+form{
+  margin-bottom: 20px;
+}
+
+#lista{
+  background-color: white;
+  width: 500px;
+  height: 300px;
+}
