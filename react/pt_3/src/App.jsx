@@ -5,6 +5,7 @@ import TimerT from './components/TimerT'
 import UseEfect from './components/UseEfect'
 import UserReducer from './components/UseReducer'
 import UseReducerT from './components/UseReducerT'
+import Ex1 from './ex/Ex1'
 
 function App() {
   
@@ -15,10 +16,11 @@ function App() {
       <TimerT /> 
       <UserReducer />
       <UseReducerT /> */}
-      <PropChild>
+      {/* <PropChild>
           <Timer />
           <p>fim</p>
-      </PropChild>
+      </PropChild> */}
+      <Ex1 infoUsuario={{nome:'adson', idade:18, cpf:103.584}}/>
     </>
   )
 }
