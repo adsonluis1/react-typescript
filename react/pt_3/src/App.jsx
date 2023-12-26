@@ -6,6 +6,7 @@ import UseEfect from './components/UseEfect'
 import UserReducer from './components/UseReducer'
 import UseReducerT from './components/UseReducerT'
 import Ex1 from './ex/Ex1'
+import Ex2 from './ex/Ex2'
 
 function App() {
   
@@ -20,7 +21,8 @@ function App() {
           <Timer />
           <p>fim</p>
       </PropChild> */}
-      <Ex1 infoUsuario={{nome:'adson', idade:18, cpf:103.584}}/>
+      {/* <Ex1 infoUsuario={{nome:'adson', idade:18, cpf:103.584}}/> */}
+      <Ex2 />
     </>
   )
 }
