@@ -1,27 +1,29 @@
 import { useState, useEffect } from "react"
 
 function BarraDeAdd ({onTask}){
+
     const oltSubmit = (evt)=>{
         evt.preventDefault()
       } 
 
-      const [tarefa, setTarefa] = useState('')
+      const [task, setTask] = useState('')
+
 
     return (
         <div>
             <form onSubmit={oltSubmit}>
             <input type="text"
-            onChange={(evt)=> setTarefa(evt.target.value)}
-            value={tarefa}/>
+            onChange={(evt)=> setTask(evt.target.value)}
+            value={task}/>
             <input 
             type="button" 
             value="enviar" 
             id="btn_enviar"
             onClick={()=>{
-                if(tarefa != ''){
-                console.log(tarefa)
-                onTask(tarefa)
-                setTarefa('')
+                if(task != ''){
+                onTask(task)
+                setTask('')
+                console.log(task)
                }
             }}
             />

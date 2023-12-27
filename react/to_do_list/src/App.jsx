@@ -1,24 +1,23 @@
 import reactLogo from './assets/react.svg'
 import './App.css'
 import BarraDeAdd from './componetes/BarraDeAdd'
-import { tarefas } from './componetes/BarraDeAdd'
 import Lista from './componetes/Lista'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 function App() {
 
-  const [task, setTask] = useState([]) 
+  const [tasks, setTask] = useState([]) 
 
-  const addTask = (evt)=>{
-    setTask([...task], {id: Date.now(), text:task})
+    const addTask = (evt) => {
+    setTask([...tasks, {id: Date.now(), text:evt}])
   }
 
   return (
 
     <main>
         <h1>lista de tarefas</h1>
-
         <BarraDeAdd onTask={addTask}/>
-        <Lista tarefas={tarefas}/>
+        <Lista tarefas={tasks}/>
+        
     </main>
   )
 }

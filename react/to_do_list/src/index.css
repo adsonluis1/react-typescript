@@ -27,7 +27,19 @@ form{
 }
 
 #lista{
-  background-color: white;
+  border: 1px solid black;
   width: 500px;
-  height: 300px;
+  min-height: 280px;
+}
+
+.linha{
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  border: 2px solid grey;
+  padding: 5px;
+}
+
+button{
+  margin-left: 70%;
 }
