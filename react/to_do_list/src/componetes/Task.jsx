@@ -2,11 +2,11 @@ function Task ({task}){
     return (
         <div id="lista">
             {task.map((evt)=>[
-                <div className="linha">
+                <div key={evt.id} className="linha">
                     <p>{evt.text}</p>
                     <button onClick={(evt)=>{
-                       tarefas.pop()
-                       console.log(tarefas)
+                       task.pop()
+                       console.log(task)
                     }}>apagar</button>
                 </div>
             ])}

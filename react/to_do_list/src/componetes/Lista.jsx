@@ -7,7 +7,7 @@ function Lista ({tarefas}){
     }
 
     return (
-        <Task key={tarefas.id} tarefas={tarefas}/>  
+        <Task task={tarefas}/>  
     )
 }
 
