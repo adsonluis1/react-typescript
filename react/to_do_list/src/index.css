@@ -42,4 +42,15 @@ form{
 
 button{
   margin-left: 70%;
+  background-color: darkblue;
+  color: white;
+  border: 1px solid black;
+}
+
+.click{
+  text-decoration: line-through;
+}
+
+span{
+  cursor: pointer;
 }

@@ -1,16 +1,14 @@
-function Task ({task}){
+function Task ({task, funck, marcar}){
     return (
-        <div id="lista">
-            {task.map((evt)=>[
-                <div key={evt.id} className="linha">
-                    <p>{evt.text}</p>
-                    <button onClick={(evt)=>{
-                       task.pop()
-                       console.log(task)
-                    }}>apagar</button>
-                </div>
-            ])}
-        </div>   
+        <div className="linha">
+        <p onClick={()=>{
+            marcar()
+        }} style={{textDecoration: task.done ? 'line-through' : ''}}>{task.text}</p>
+        <button onClick={(evt)=>{
+           funck()
+        }}>apagar</button>
+        
+        </div>
     )
 }
 

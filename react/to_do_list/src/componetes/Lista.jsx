@@ -1,13 +1,15 @@
-import { Children } from "react"
+import { Children, useEffect, useState } from "react"
 import Task from "./Task"
 
-function Lista ({tarefas}){
-    const apagar = (evt)=>{
-        evt.parentNode()
-    }
+
+function Lista ({tarefas, funck, click}){
 
     return (
-        <Task task={tarefas}/>  
+        <div id="lista">
+        {tarefas.map((evt)=>[
+            <Task key={evt.id} task={evt} funck={() => funck(evt.id)} marcar={()=> click(evt.id)}/>
+        ])}
+        </div>
     )
 }
 

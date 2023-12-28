@@ -23,7 +23,6 @@ function BarraDeAdd ({onTask}){
                 if(task != ''){
                 onTask(task)
                 setTask('')
-                console.log(task)
                }
             }}
             />
