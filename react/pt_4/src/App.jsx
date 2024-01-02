@@ -12,6 +12,7 @@ import Dashbord from './components/Dashbord'
 import Perfil from './components/Perfil'
 import Config from './components/Config'
 import Tarefas from './components/Tarefas'
+import Teste from './components/Teste'
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           <li>
             <Link to='/exit'>sair</Link>
           </li>
+          <li>
+            <Link to='/Teste'>Teste</Link>
+          </li>
         </ul>
 
         <div>
@@ -53,7 +57,7 @@ function App() {
           </ul>
         </div>
       </nav>
-
+  
       <Routes>
           {/* route normal */}
           <Route path='/' element={<Inicial />}/>
@@ -69,7 +73,7 @@ function App() {
             <Route path='perfil' element={<Perfil />} />
             <Route path='config' element={<Config />} />
           </Route>
-          
+          <Route path='/Teste' element={<Teste />} />
       </Routes>
     </>
   )
