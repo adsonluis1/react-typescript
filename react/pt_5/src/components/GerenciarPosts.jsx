@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 
-const AxiosPosts = () => {
+const GerenciarPosts = () => {
+    
     const [post, setPost] = useState([])
     const [erro, setErro] = useState('')
 
@@ -23,20 +24,18 @@ const AxiosPosts = () => {
 
     })
 
-  return (
+    return (
     <div>
-        <h1>Axios</h1>
-        {erro ? (
-            <p>error: {erro}</p>
-        ) : (post.map((posts)=>[
+        <h2>geranciar</h2>
+        {(post.map((posts)=>[
             <div key={posts.id}>
                 <h2>{posts.title}</h2>
                 <p>{posts.body}</p>
             </div>
-    ]))}
+        ]))}
+       
     </div>
   )
 }
 
-
-export default AxiosPosts
+export default GerenciarPosts
