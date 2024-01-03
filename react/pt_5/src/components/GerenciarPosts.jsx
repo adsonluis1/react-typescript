@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
+
 const GerenciarPosts = () => {
     
     const [post, setPost] = useState([])
@@ -12,7 +13,8 @@ const GerenciarPosts = () => {
 
             try {   
                 const response = await axios.get("https://jsonplaceholder.typicode.com/posts")
-                setPost(response.data)
+                setPost(response.data.slice(0,5))
+                console.log(response.data)
 
             } catch (error) {
                 setErro(erro.message)
@@ -27,12 +29,17 @@ const GerenciarPosts = () => {
     return (
     <div>
         <h2>geranciar</h2>
-        {(post.map((posts)=>[
+        {erro ? (<p>erro: {erro}</p>) : ((post.map((posts)=>[
             <div key={posts.id}>
                 <h2>{posts.title}</h2>
                 <p>{posts.body}</p>
+                <button 
+                onClick={()=>{
+
+                }}
+                >editar</button>
             </div>
-        ]))}
+        ])))}
        
     </div>
   )
