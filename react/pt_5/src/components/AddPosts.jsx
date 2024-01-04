@@ -1,12 +1,17 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const AddPosts = ({addNewsPosts}) => {
-    const [title,setTitle] = useState('')
-    const [body, setBody] = useState('')
-    const [edit, setEdit] = useState('')
-    const [select, setSelect] = useState('')
-
+const AddPosts = ({addNewsPosts, posts}) => {
+    const [title,setTitle] = useState(posts?.title || '')
+    const [body, setBody] = useState(posts?.body || '')
+    
+    useEffect(()=>{
+        if(posts){
+            setBody(posts.body)
+            setTitle(posts.title)   
+            console.log(posts) 
+        }
+    },[posts])
 
     const hadleSubmit = (evt)=>{
         evt.preventDefault()
@@ -15,8 +20,16 @@ const AddPosts = ({addNewsPosts}) => {
 
             const addPostAPI = async ()=>{
                 try {    
-                 const response = await axios.post("https://jsonplaceholder.typicode.com/posts", NewPost)
-                 addNewsPosts(response.data,'add')
+                    if (posts) {
+                        
+                        const response = await axios.put(`https://jsonplaceholder.typicode.com/posts/${posts.id}`, NewPost)
+                        addNewsPosts(response.data,'edit')
+
+                    } else {
+                        const response = await axios.post("https://jsonplaceholder.typicode.com/posts", NewPost)
+                        addNewsPosts(response.data,'add')
+                    }
+                 
              } catch (error) {
                      console.log(error)
                  }

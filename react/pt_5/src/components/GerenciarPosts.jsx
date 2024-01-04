@@ -7,10 +7,15 @@ const GerenciarPosts = () => {
     
     const [post, setPost] = useState([])
     const [erro, setErro] = useState('')
+    const [edit, setEdit] = useState(false)
+    const [select, setSelect] = useState('')
+
 
     const addNewPost = (posts, funck)=>{
         if(funck === 'add'){
             setPost((evt) => [posts, ...evt])
+        }else if(funck === 'edit'){
+            setPost((evt) => evt.map((p)=> p.id === posts.id ? posts : p))
         }
     }
 
@@ -33,19 +38,34 @@ const GerenciarPosts = () => {
 
     },[])
 
+    const handleEdit = (posts) => {
+        console.log(posts)
+        setSelect(posts)
+        setEdit(true)
+    }
+
+    const handleCancelEdit = (posts) => {
+        setSelect('')
+        setEdit(false)
+    }
+
     return (
     <div>
         <h2>geranciar</h2>
-        <AddPosts addNewsPosts={addNewPost}/>
+        <AddPosts posts= {edit ? select : ''}
+        addNewsPosts={addNewPost}
+        />
+        {edit && <button onClick={handleCancelEdit}>Cancelar edit</button>}
         {erro ? (<p>erro: {erro}</p>) : ((post.map((posts)=>[
             <div key={posts.id}>
                 <h2>{posts.title}</h2>
                 <p>{posts.body}</p>
                 <button 
                 onClick={(evt)=>{
-                   
+                   handleEdit(posts)
                 }}
                 >editar</button>
+                       
             </div>
         ])))}
        
