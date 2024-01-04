@@ -1,12 +1,31 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const AddPosts = () => {
+const AddPosts = ({addNewsPosts}) => {
     const [title,setTitle] = useState('')
     const [body, setBody] = useState('')
-    
+    const [edit, setEdit] = useState('')
+    const [select, setSelect] = useState('')
+
+
     const hadleSubmit = (evt)=>{
         evt.preventDefault()
+
+        const NewPost = {title, body, userId:1}
+
+            const addPostAPI = async ()=>{
+                try {    
+                 const response = await axios.post("https://jsonplaceholder.typicode.com/posts", NewPost)
+                 addNewsPosts(response.data,'add')
+             } catch (error) {
+                     console.log(error)
+                 }
+     
+     
+             }
+
+             addPostAPI()
+                
     }
 
     return (
@@ -29,7 +48,7 @@ const AddPosts = () => {
         </div>
 
         <div>
-            <input type="submit" value="enviar"/>
+            <button type="submit">Postar</button>
         </div>
 
     </form>
