@@ -34,6 +34,11 @@ function App() {
         setPosts((selectPost) => [post, ...selectPost])
       }else if(type === 'edit'){
         setPosts((evt) => evt.map((p)=> p.id === post.id ? post : p))
+      }else if(type === 'delete'){
+        setPosts((currentPost) => currentPost.filter((p) => p.id !== post))
+        setIsSelect('')
+        setIsEditing('')
+        
       }
     }
 
