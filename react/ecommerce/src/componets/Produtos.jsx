@@ -4,6 +4,11 @@ import React, { useState } from 'react'
 const Produtos = ({infoProdutos}) => {
     const [quantidade,  setQuantidade] = useState(0)
     console.log(infoProdutos)
+    
+    const heandleForm = (evt)=>{
+        evt.preventDefault()
+    }
+    
     return (
 
     <section>
@@ -16,14 +21,14 @@ const Produtos = ({infoProdutos}) => {
                         <img src={produtos.img} alt="" />
                         <h3>{produtos.name}</h3>
                         <h3>R${produtos.price}</h3>
-                        <form>
+                        <form onSubmit={heandleForm}>
                         <input type="number"
                         value={quantidade}
                         min={0}
                         max={99}
                         onChange={(evt)=> setQuantidade(evt.target.value)}
                         />
-                        <input type="submit" value="comprar" />
+                        <input onClick={()=> console.log(produtos.name)} type="submit" value="comprar" />
                         </form>
                     </div>
                 ])}
