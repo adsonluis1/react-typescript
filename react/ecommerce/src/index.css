@@ -90,7 +90,14 @@ form [type='submit']:hover{
 .childrenCarrinho{
     display: flex;
     padding: 10px ;
-    width: 40%;
+    margin: 5px;
+    min-width: 40%;
+    max-width: 60%;
+    box-shadow: 1px 1px 8px black;
+}
+
+.infoCompras{
+    width: 100%;
 }
 
 .childrenCarrinho h3{
@@ -103,7 +110,7 @@ form [type='submit']:hover{
     margin-left: 10px;
 }
 
-.childrenCarrinho button{
+.childrenCarrinho button, section button{
     background-color: rgb(0, 218, 0);
     border: 2px solid black;
     border-radius: 5px;
@@ -113,3 +120,44 @@ form [type='submit']:hover{
     height: 30px;
 }
 
+section > button{
+    margin-left: 10px;
+}
+
+section h2{
+    padding: 5px;
+}
+
+/* finalizar compras */
+#tituloCompras{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+#viewProduto{
+    padding: 5px;
+    min-height: 200px;
+}
+
+#viewProduto > div{
+    padding: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.287);
+    min-width: 30%;
+    max-width: 40%;
+}
+
+#viewProduto  p {
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+#viewProduto > p{
+    margin-top: 20px;
+    background-color: rgb(0, 255, 0);
+    width: 230px;
+    border-radius: 5px;
+    padding: 5px;
+}

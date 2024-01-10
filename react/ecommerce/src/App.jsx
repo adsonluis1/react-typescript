@@ -3,13 +3,14 @@ import { Routes, Route, Link} from 'react-router-dom'
 import Produtos from './componets/Produtos'
 import { useState } from 'react'
 import Carrinho from './componets/Carrinho'
-
+import CompraFinalizada from './componets/CompraFinalizada'
 
 function App() {
   const [selectCarrinho, setSelectCarrinho] = useState(null)
   const [selectCatalago, setSelectCatalago] = useState(true)
   const [compras, setCompras] = useState([])
-
+  const [compraFinsh, setCompraFinsh] = useState(null)
+  const [comprado, setComprado] = useState([])
 
   const produtos = [
     {id:1,
@@ -42,11 +43,11 @@ function App() {
     img:'data:image/jpeg;base64,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'
     },
 
-    // {id:6,
-    // name:'Livro de Aventura',
-    // price:'19.00',
-    // img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8SElifSpfcIs6X8so8NxqY3DlViyKJAOQA&usqp=CAU'
-    // }
+    {id:6,
+    name:'Livro de Aventura',
+    price:'19.00',
+    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp8SElifSpfcIs6X8so8NxqY3DlViyKJAOQA&usqp=CAU'
+    }
   ]
 
 
@@ -57,21 +58,34 @@ function App() {
        <ul>
         <li onClick={()=> {
           setSelectCatalago(true)
-          setSelectCarrinho(null)}
-        }>
+          setSelectCarrinho(null)
+          setCompraFinsh(null)
+        }}>
             catalago
         </li>
         <li onClick={()=> {
           setSelectCarrinho(true)
           setSelectCatalago(null)
+          setCompraFinsh(null)
           }}>carrinho</li>
        </ul>
 
       </header>
 
       <main>
-      {selectCatalago? <Produtos infoProdutos={produtos} setCompras={setCompras}/> : ''}
-      {selectCarrinho? <Carrinho compras={compras}/>:''}
+      {selectCatalago? <Produtos 
+      infoProdutos={produtos}
+       setCompras={setCompras}
+       /> : ''}
+
+      {selectCarrinho? <Carrinho compras={compras} 
+      setSelectCarrinho={setSelectCarrinho}
+      setCompraFinsh={setCompraFinsh}
+      setCompras={setCompras}
+      setComprado={setComprado}
+      />:''}
+
+      {compraFinsh?<CompraFinalizada compras={comprado}/>:''}
       </main>
 
 
