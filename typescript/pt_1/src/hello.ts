@@ -1,1 +1,1 @@
-console.log('hello typscript')
+console.log('hello word')
