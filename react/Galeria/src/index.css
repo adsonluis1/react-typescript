@@ -29,6 +29,7 @@
     margin-left: 10px;
     border: 1px solid black;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .album{
@@ -68,3 +69,4 @@
     max-height: 100%;
     border-radius: 5px;
 }
+
