@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 
 const infoUsuarios = {
     nome:'adson',
@@ -8,10 +8,10 @@ const infoUsuarios = {
 }
 
 function editUso (estado, acao){
-
+    const [nome, setnome] = useState('')
     switch (acao.tipo){
         case 'editNome':
-            return {nome: 'adsin'}
+            return {nome: 'adon'}
         case 'editLogin':
             return {login: 'rei adsin'}
         case 'editSenha':
@@ -24,6 +24,12 @@ function editUso (estado, acao){
 
 const UseReducerT = () => {
     const [estado, dispatch] = useReducer(editUso,infoUsuarios) 
+    
+    
+    const headSubmit = (evt)=>{
+        evt.preventDefault()
+        dispatch({tipo:'editNome'})
+    }
 
     return (
     <section>
@@ -32,10 +38,12 @@ const UseReducerT = () => {
             <p>nome:{estado.login}</p>
         </div>
 
-        <div>
-            <button onClick={()=> dispatch({tipo:'editNome'})}>Mudar</button>
-            <button onClick={()=> dispatch({tipo: 'editLogin'})}>aaa</button>
-        </div>
+        <form onSubmit={headSubmit}>
+            <input 
+            type="text"
+            />
+            <input type="submit" value="enviar" />
+        </form>
     </section>
 
     
