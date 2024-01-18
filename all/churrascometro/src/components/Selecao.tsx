@@ -1,12 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import { selecao } from '../types/selecao'
 
 
 const Selecao = ({setPessoas, carnes, pessoas}:selecao) => {
-    
+    const navigate = useNavigate()
     const heandleSumbimt = (evt:React.FormEvent)=>{
         evt.preventDefault()
+        if(carnes.quantidade>=1){
+            navigate('/Final')
+        }else{
+           alert('Precisa selecionar uma pelo menos uma carne')
+        }
+        
     }
 
     return (
@@ -31,7 +37,7 @@ const Selecao = ({setPessoas, carnes, pessoas}:selecao) => {
                     id="carne" 
                     onClick={()=>{
                         carnes.carne?carnes.carne=false:carnes.carne=true
-                        console.log(carnes)
+                        carnes.carne?carnes.quantidade = 1:carnes.quantidade= -1
                     }}
                     />
                     <label htmlFor="carne">Carne</label>
@@ -43,7 +49,7 @@ const Selecao = ({setPessoas, carnes, pessoas}:selecao) => {
                     id="frango" 
                     onClick={()=>{
                         carnes.frango?carnes.frango=false:carnes.frango=true
-                        console.log(carnes)
+                        carnes.frango?carnes.quantidade = 1:carnes.quantidade= -1
                     }}
                     />
                     <label htmlFor="frango">Frango</label>
@@ -54,7 +60,7 @@ const Selecao = ({setPessoas, carnes, pessoas}:selecao) => {
                     id="linguiça" 
                     onClick={()=>{
                         carnes.linguiça?carnes.linguiça=false:carnes.linguiça=true
-                        console.log(carnes)
+                        carnes.linguiça?carnes.quantidade = 1:carnes.quantidade= -1
                     }}
                     />
                     <label htmlFor="linguiça">Linguiça</label>
@@ -65,14 +71,13 @@ const Selecao = ({setPessoas, carnes, pessoas}:selecao) => {
                     id="paoDeAlho"
                     onClick={()=>{
                         carnes.paoDeAlho?carnes.paoDeAlho=false:carnes.paoDeAlho=true
-                        console.log(carnes)
+                        carnes.paoDeAlho?carnes.quantidade = 1:carnes.quantidade= -1
                     }}
                     />
                     <label htmlFor="paoDeAlho">Pão de alho</label>
                 </div>
 
-                
-                <Link to={'/Final'}><input type="submit" value="Calcular" className='btn'/></Link>
+               <button type="submit" className='btn'>Calcular</button>
             </form>
         </div>
     </section>

@@ -2,7 +2,8 @@ export type carnes = {
     carne:boolean,
     frango:boolean,
     linguiça:boolean,
-    paoDeAlho:boolean
+    paoDeAlho:boolean,
+    quantidade:number
 }
 
 export type selecao = {
