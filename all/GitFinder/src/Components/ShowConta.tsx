@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { showconta } from "../Types/showConta"
 
-const ShowConta = ({conta}:showconta) => {
+const ShowConta = ({conta, setShowSertch}:showconta) => {
     const navigator = useNavigate()
   
     return (
@@ -27,6 +27,7 @@ const ShowConta = ({conta}:showconta) => {
         </div>
 
         <button onClick={()=>{
+            setShowSertch(false)
             navigator('/Repositorio')
         }} id="verMelhoresProjetos">Ver melhores projetos</button>
     </section>

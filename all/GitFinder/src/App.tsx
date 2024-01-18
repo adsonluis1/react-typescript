@@ -5,11 +5,18 @@ import Repositorios from './Components/Repositorios'
 import { useState } from 'react'
 function App() {
   const [conta, setConta] = useState<string>('')
-
+  const [showSertch, setShowSertch] = useState<boolean>(true)
 
   return (
     <>
-      <Sertch conta={conta} setConta={setConta}/>
+      <header>
+        <div id="divTitle">
+          <h1>GitHub Finder</h1> 
+        </div> 
+      </header>
+      
+      {showSertch?<Sertch conta={conta} setConta={setConta} setShowSertch={setShowSertch}/>:''}
+      
       <Routes>
         <Route path='/Repositorio' element={<Repositorios repositorios={conta}/>}/>
       </Routes>

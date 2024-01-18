@@ -4,7 +4,7 @@ import ShowConta from "./ShowConta"
 import { sertch } from "../Types/sertch"
 
 
-const Sertch = ({conta, setConta}:sertch) => {
+const Sertch = ({conta, setConta, setShowSertch}:sertch) => {
     const [nome, setNome] = useState<string>('')
     const [erro, setErro] = useState<string | unknown>('a')
 
@@ -29,7 +29,6 @@ const Sertch = ({conta, setConta}:sertch) => {
 
     return (
         <section id="sectionSertch">
-            <h1>GitHub Finder</h1>
 
             <div id="divSertch">
                 <h2>Busque por um usuario:</h2>
@@ -46,7 +45,7 @@ const Sertch = ({conta, setConta}:sertch) => {
             </div>
 
             
-            {conta != ''?<ShowConta conta={conta} />: erro === 'a' ? '': <h2>Conta não encontrada...</h2>}
+            {conta != ''?<ShowConta conta={conta} setShowSertch={setShowSertch}/>: erro === 'a' ? '': <h2>Conta não encontrada...</h2>}
         </section>
   )
 }

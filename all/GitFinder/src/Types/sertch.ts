@@ -13,4 +13,5 @@ export type usuario = {
 export type sertch = {
     conta:string
     setConta:(evt:string)=> void
+    setShowSertch:(evt:boolean)=> void
 }
