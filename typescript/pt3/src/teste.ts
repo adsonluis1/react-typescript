@@ -1,5 +1,32 @@
-const nums:number[] = [10,4,5,19,49]
+type arr = {
+    nome:string
+    idade:number
+}
+const newArr:[number,number,number] = [0,0,0]
+const Arr:arr[] = [
+    {nome:'adsin',
+    idade: 10},
+    {nome:'jose',
+    idade:34},
+    {nome:'patricia',
+    idade:19},
+    {nome:'anne',
+    idade:14},
+    {nome:'priscila',
+    idade:49},
+    {nome:'bia',
+    idade:3},
+    {nome:'rafaelle',
+    idade:14},
+    {nome:'luis',
+    idade:25}
+]
 
-console.log(Math.max(...nums))
+Arr.map((evt:arr)=>{
+    if(evt.idade > newArr[0]){
+        newArr.splice(0, 1,evt.idade)
+    }
+})
 
-console.log(nums.sort((a,b)=> b-a).splice(0,3))
+console.log(newArr)
+
