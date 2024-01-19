@@ -6,13 +6,19 @@ import { repositorios } from "../Types/repositorios"
 
 const Repositorios = ({repositorios}:repositorio) => {
     const [repositorio, setRepositorio] = useState<[repositorios]>()
-    let arr:number[]= []
+    let index:number
+    let newArr:repositorios[] | number[] = [0,0,0]
+    
+    for(var n in repositorio){
+        repositorio.map((evt:repositorios)=>{
+            if(evt.stargazers_count > newArr[n]){
+                newArr.splice(parseInt(n), 1,evt)
+                index = repositorio.indexOf(evt)
+            }
+        })
 
-    repositorio?.map((evt:repositorios)=>{
-       arr.push(evt.stargazers_count)
-       arr.sort((a:number,b:number)=> b-a)
-       arr = arr.splice(0,3)
-    })
+        repositorio.splice(index!,1)
+    }
 
     useEffect(()=>{
         const heandle = async ()=>{
@@ -31,6 +37,12 @@ const Repositorios = ({repositorios}:repositorio) => {
     const directPages = (evt:repositorios)=>{
         window.open(evt.html_url, '_blank')
     }
+
+    // newArr.map((evt:repositorios)=>{
+    //     console.log(evt.id)
+    // })
+
+    console.log(newArr)
     return (
     <section id="sectionRepositorio">
 

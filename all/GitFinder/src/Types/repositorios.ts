@@ -1,10 +1,10 @@
 export type repositorios = {
-    html_url:string
-    fork_count:number
+    html_url:string 
+    fork_count:number 
     stargazers_count:number
-    name:string
-    id:number
-    language:string
+    name:string 
+    id:number 
+    language:string 
 }
 
 import { usuario } from "./sertch"

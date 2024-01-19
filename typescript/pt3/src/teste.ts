@@ -2,14 +2,15 @@ type arr = {
     nome:string
     idade:number
 }
-const newArr:[number,number,number] = [0,0,0]
+let index:number
+const newArr:[arr, arr, arr] | [number,number,number] = [0,0,0]
 const Arr:arr[] = [
     {nome:'adsin',
-    idade: 10},
+    idade: 50},
     {nome:'jose',
     idade:34},
     {nome:'patricia',
-    idade:19},
+    idade:29},
     {nome:'anne',
     idade:14},
     {nome:'priscila',
@@ -22,11 +23,18 @@ const Arr:arr[] = [
     idade:25}
 ]
 
-Arr.map((evt:arr)=>{
-    if(evt.idade > newArr[0]){
-        newArr.splice(0, 1,evt.idade)
-    }
-})
+for(var n in Arr){
+    Arr.map((evt:arr)=>{
+        if(evt.idade > newArr[n]){
+            newArr.splice(parseInt(n), 1,evt.idade)
+            index = Arr.indexOf(evt)
+        }
+    })
 
+    Arr.splice(index!,1)
+}
+
+
+console.log(Arr)
 console.log(newArr)
 
