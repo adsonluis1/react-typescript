@@ -3,7 +3,8 @@ type arr = {
     idade:number
 }
 let index:number
-const newArr:[arr, arr, arr] | [number,number,number] = [0,0,0]
+let newArr:arr[] = []
+
 const Arr:arr[] = [
     {nome:'adsin',
     idade: 50},
@@ -12,29 +13,32 @@ const Arr:arr[] = [
     {nome:'patricia',
     idade:29},
     {nome:'anne',
-    idade:14},
+    idade:34},
     {nome:'priscila',
     idade:49},
     {nome:'bia',
-    idade:3},
+    idade:73},
     {nome:'rafaelle',
-    idade:14},
+    idade:98},
     {nome:'luis',
     idade:25}
 ]
 
-for(var n in Arr){
+Arr.splice(0,3).map((evt)=>{
+    newArr.push(evt)
+})
+
+for(var n in newArr!){
     Arr.map((evt:arr)=>{
-        if(evt.idade > newArr[n]){
-            newArr.splice(parseInt(n), 1,evt.idade)
+        if(evt.idade > newArr[n].idade){
+            newArr.splice(parseInt(n), 1,evt)
             index = Arr.indexOf(evt)
+            console.log(index)
         }
     })
 
     Arr.splice(index!,1)
 }
 
-
-console.log(Arr)
-console.log(newArr)
+console.log(newArr!)
 

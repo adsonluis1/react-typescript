@@ -3,6 +3,7 @@ import './App.css'
 import Sertch from './Components/Sertch'
 import Repositorios from './Components/Repositorios'
 import { useState } from 'react'
+import Teste from './Components/Teste'
 function App() {
   const [conta, setConta] = useState<string>('')
   const [showSertch, setShowSertch] = useState<boolean>(true)
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path='/Repositorio' element={<Repositorios repositorios={conta}/>}/>
       </Routes>
+      <Teste />
     </>
   )
 }

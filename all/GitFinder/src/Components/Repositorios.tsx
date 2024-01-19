@@ -7,19 +7,8 @@ import { repositorios } from "../Types/repositorios"
 const Repositorios = ({repositorios}:repositorio) => {
     const [repositorio, setRepositorio] = useState<[repositorios]>()
     let index:number
-    let newArr:repositorios[] | number[] = [0,0,0]
+    let newArr:repositorios[] = []
     
-    for(var n in repositorio){
-        repositorio.map((evt:repositorios)=>{
-            if(evt.stargazers_count > newArr[n]){
-                newArr.splice(parseInt(n), 1,evt)
-                index = repositorio.indexOf(evt)
-            }
-        })
-
-        repositorio.splice(index!,1)
-    }
-
     useEffect(()=>{
         const heandle = async ()=>{
                 try {
@@ -32,43 +21,65 @@ const Repositorios = ({repositorios}:repositorio) => {
 
         heandle()
     },[])
+
+       
+    if (repositorio) {
+        repositorio!.splice(0,3).map((evt:repositorios)=>{
+            newArr.push(evt)
+        })
+    }
+   
+
+    const filter = async ()=>{
+        for(var n in newArr!){
+            await repositorio!.map((evt:repositorios)=>{
+                if(evt.stargazers_count > newArr[n].stargazers_count){
+                    newArr.splice(parseInt(n),1,evt)
+                    index = repositorio!.indexOf(evt)
+                }
+            })
+            
+            await repositorio!.splice(index!,1)
+    }
+        console.log(newArr)
+}
+        
+        
     
     
     const directPages = (evt:repositorios)=>{
         window.open(evt.html_url, '_blank')
     }
 
-    // newArr.map((evt:repositorios)=>{
-    //     console.log(evt.id)
-    // })
-
-    console.log(newArr)
+    filter()
+    console.log(...newArr)
     return (
-    <section id="sectionRepositorio">
-
-         {repositorio?.map((evt:repositorios)=>[
-
-
-            <div key={evt.id} className="divRepositorios">
-                <h2>{evt.name}</h2>
-                <h3>{'</>'} {evt.language}</h3>
-                <div className="StarFork">
-                    <div className="divEstrela">
-                        <p>{evt.stargazers_count}</p>
-                        <p className="pEstrela">⭐</p>
+        <section id="sectionRepositorio">
+    
+             {newArr?.map((evt:repositorios)=>[
+    
+    
+                <div key={evt.id} className="divRepositorios">
+                    <h2>{evt.name}</h2>
+                    <h3>{'</>'} {evt.language}</h3>
+                    <div className="StarFork">
+                        <div className="divEstrela">
+                            <p>{evt.stargazers_count}</p>
+                            <p className="pEstrela">⭐</p>
+                        </div>
+    
+                        <div className="divForks">
+                            <p>0</p>
+                            <p className="pForks">♆</p>
+                        </div>
                     </div>
-
-                    <div className="divForks">
-                        <p>0</p>
-                        <p className="pForks">♆</p>
-                    </div>
+    
+                    <button onClick={()=> directPages(evt)}>Ver codigo</button>
                 </div>
-
-                <button onClick={()=> directPages(evt)}>Ver codigo</button>
-            </div>
-        ])} 
-    </section>
-  )
+            ])} 
+        </section>
+      )
+   
 }
 
 export default Repositorios
