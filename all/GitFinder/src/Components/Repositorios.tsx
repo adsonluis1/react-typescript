@@ -2,61 +2,72 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { repositorio } from "../Types/repositorios"
 import { repositorios } from "../Types/repositorios"
+import { useNavigate } from "react-router-dom"
 
 
-const Repositorios = ({repositorios}:repositorio) => {
-    const [repositorio, setRepositorio] = useState<[repositorios]>()
+const Repositorios = ({repositorios, setShowSertch, setConta, setErro}:repositorio) => {
+    const [repositorio, setRepositorio] = useState<repositorios[]>()
     let index:number
     let newArr:repositorios[] = []
-    
+    const [topsRepositorios, setTopsRepositorios] = useState<repositorios[]>([])
+    const navigate = useNavigate()
     useEffect(()=>{
-        const heandle = async ()=>{
-                try {
-                    const responde = await axios.get(`https://api.github.com/users/${repositorios.login}/repos`)
-                    setRepositorio(responde.data)
-                } catch (error) {
-                    console.log(error)
-                }    
+
+        const heandApi = async ()=>{
+
+           try {
+            const response = await axios.get(`https://api.github.com/users/${repositorios.login}/repos`)
+            await setRepositorio(response.data)   
+        } catch (error) {
+            console.log(error)
+           }
         }
 
-        heandle()
+        heandApi()
     },[])
+  
 
-       
-    if (repositorio) {
-        repositorio!.splice(0,3).map((evt:repositorios)=>{
-            newArr.push(evt)
-        })
-    }
-   
-
-    const filter = async ()=>{
-        for(var n in newArr!){
-            await repositorio!.map((evt:repositorios)=>{
-                if(evt.stargazers_count > newArr[n].stargazers_count){
-                    newArr.splice(parseInt(n),1,evt)
-                    index = repositorio!.indexOf(evt)
-                }
+        if (repositorio) {
+            repositorio!.splice(0,3).map((evt:repositorios)=>{
+                newArr.push(evt)
             })
-            
-            await repositorio!.splice(index!,1)
+        }
+       
+        const filter = async ()=>{
+            for(var n in newArr!){
+                 repositorio!.map((evt:repositorios)=>{
+                    if(evt.stargazers_count > newArr[n].stargazers_count){
+                        newArr.splice(parseInt(n),1,evt)
+                        index = repositorio!.indexOf(evt)
+                    }
+                })
+                
+                repositorio!.splice(index!,1)
+        }
+
     }
-        console.log(newArr)
-}
-        
-        
-    
-    
+
+    useEffect(()=>{
+        filter()
+        setTopsRepositorios(newArr)
+    },[repositorio])
+
     const directPages = (evt:repositorios)=>{
         window.open(evt.html_url, '_blank')
     }
 
-    filter()
-    console.log(...newArr)
+    console.log(topsRepositorios)
     return (
         <section id="sectionRepositorio">
-    
-             {newArr?.map((evt:repositorios)=>[
+
+            <button id="btn_voltar" onClick={()=>{
+                navigate('/')
+                setShowSertch(true)
+                setConta('')
+                setErro('a')
+                }}>Voltar</button>
+
+             {topsRepositorios?.map((evt:repositorios)=>[
     
     
                 <div key={evt.id} className="divRepositorios">
@@ -69,12 +80,12 @@ const Repositorios = ({repositorios}:repositorio) => {
                         </div>
     
                         <div className="divForks">
-                            <p>0</p>
+                            <p>{evt.forks}</p>
                             <p className="pForks">♆</p>
                         </div>
                     </div>
     
-                    <button onClick={()=> directPages(evt)}>Ver codigo</button>
+                    <button className="btn" onClick={()=> directPages(evt)}>Ver codigo</button>
                 </div>
             ])} 
         </section>

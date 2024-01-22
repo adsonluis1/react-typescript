@@ -4,9 +4,9 @@ import ShowConta from "./ShowConta"
 import { sertch } from "../Types/sertch"
 
 
-const Sertch = ({conta, setConta, setShowSertch}:sertch) => {
+const Sertch = ({conta, setConta, setShowSertch, setErro, erro}:sertch) => {
     const [nome, setNome] = useState<string>('')
-    const [erro, setErro] = useState<string | unknown>('a')
+   
 
     const headSubmit = (evt:React.FormEvent)=>{
         evt.preventDefault()
@@ -26,7 +26,7 @@ const Sertch = ({conta, setConta, setShowSertch}:sertch) => {
 
 
     }
-
+    console.log(conta)
     return (
         <section id="sectionSertch">
 
@@ -45,7 +45,8 @@ const Sertch = ({conta, setConta, setShowSertch}:sertch) => {
             </div>
 
             
-            {conta != ''?<ShowConta conta={conta} setShowSertch={setShowSertch}/>: erro === 'a' ? '': <h2>Conta não encontrada...</h2>}
+            {conta != ''?<ShowConta conta={conta} setShowSertch={setShowSertch}/>: ''}
+            {erro == 'a' ? '': <h2>Conta não encontrada...</h2>}
         </section>
   )
 }

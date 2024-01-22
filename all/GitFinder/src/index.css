@@ -124,7 +124,7 @@ img{
     width: 100px;
 }
 
-#verMelhoresProjetos, #sectionRepositorio button {
+#verMelhoresProjetos, #sectionRepositorio .btn {
     margin-top: 50px;
     padding: 10px;
     width: 270px;
@@ -192,4 +192,18 @@ img{
 .pEstrela, .pForks{
     background-color: rgb(159, 62, 249);
     padding: 5px;
+}
+
+#btn_voltar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 10%;
+    height: 30px;
+
+    background-color: blueviolet;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 5px 5px;
 }

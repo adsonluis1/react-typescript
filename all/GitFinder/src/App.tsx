@@ -3,11 +3,10 @@ import './App.css'
 import Sertch from './Components/Sertch'
 import Repositorios from './Components/Repositorios'
 import { useState } from 'react'
-import Teste from './Components/Teste'
 function App() {
   const [conta, setConta] = useState<string>('')
   const [showSertch, setShowSertch] = useState<boolean>(true)
-
+  const [erro, setErro] = useState<string | unknown>('a')
   return (
     <>
       <header>
@@ -16,12 +15,12 @@ function App() {
         </div> 
       </header>
       
-      {showSertch?<Sertch conta={conta} setConta={setConta} setShowSertch={setShowSertch}/>:''}
+      {showSertch?<Sertch conta={conta} setConta={setConta} setShowSertch={setShowSertch} setErro={setErro} erro={erro}/>:''}
       
       <Routes>
-        <Route path='/Repositorio' element={<Repositorios repositorios={conta}/>}/>
+        <Route path='/Repositorio' element={<Repositorios repositorios={conta} setShowSertch={setShowSertch} setConta={setConta} setErro={setErro}/>}/>
       </Routes>
-      <Teste />
+
     </>
   )
 }
