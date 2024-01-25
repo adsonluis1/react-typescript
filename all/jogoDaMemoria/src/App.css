@@ -44,10 +44,6 @@ section{
     opacity: .9;
 }
 
-.div_pecas h1{
-   
-}
-
 .div_pecas:hover{
     transition: 1s;
     opacity: 1;
