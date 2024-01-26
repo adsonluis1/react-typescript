@@ -1,21 +1,16 @@
 import { useState } from 'react'
 import './App.css'
+import { isCompositeComponent } from 'react-dom/test-utils'
 
-type card={
-  value:string | null
-  isFlip:boolean 
-  id:number
-}
-
-const baguncar = (array:card[])=>{
+const baguncar = (array)=>{
   array.sort(()=> Math.random() - 0.8)
   return array
 }
 
 const gerenerationCards = ()=>{
-  const peças:string[] = ['a','b','c','d','e','f','g','h','i','j']
+  const peças= ['a','b','c','d','e','f','g','h']
   
-  const cards = peças.map((evt:string)=>({
+  const cards = peças.map((evt)=>({
     value:evt,
     isFlip:false
   }))
@@ -32,18 +27,18 @@ gerenerationCards()
 
 function App() {
   const [vidas, setVidas] = useState(7)
-  const [flippedCard, setFlippedCard] = useState<card[]>([])
-  const [cards, setCards] = useState<card[]>(gerenerationCards)
+  const [flippedCard, setFlippedCard] = useState([])
+  const [cards, setCards] = useState(gerenerationCards)
   const result = cards.filter((card)=> card.isFlip).length
 
 
 
-  const heandleCards = (click:card)=>{
+  const heandleCards = (click)=>{
     if(vidas === 0) return
   
     if (flippedCard.length === 2) return
    
-    const newCard = cards?.map((card:card)=>{
+    const newCard = cards.map((card)=>{
       return card.id === click.id ? {...card, isFlip:true} : card
     })
 
@@ -73,9 +68,9 @@ function App() {
   return (
     <>
     <h1>Jogo Da Memoria</h1>
-    {vidas === 0?<h2>suas vidas acabaram</h2>:result === cards.length?<h2>parabens vc ganhou</h2>:<h2>vidas: {vidas}</h2>}
+    {vidas === 0?<p>suas vidas acabaram</p>:result === cards.length?<h2>parabens vc ganhou</h2>:<h2>vidas: {vidas}</h2>}
     <section>
-      {cards!.map((evt:card, index)=>[
+      {cards.map((evt, index)=>[
         <div className='div_pecas' key={index} onClick={()=>{
           heandleCards(evt)
           console.log(evt)
