@@ -1,0 +1,29 @@
+{
+  "producrs": [
+    {
+      "id": "1",
+      "name": "camisa",
+      "price": 60
+    },
+    {
+      "id": "2",
+      "name": "tenis",
+      "price": 240
+    },
+    {
+      "id": "3",
+      "name": "calça",
+      "price": 130
+    },
+    {
+      "id": "4",
+      "name": "pulseira",
+      "price": 40
+    },
+    {
+      "id": "8cf6",
+      "name": "camisa polo",
+      "price": "80"
+    }
+  ]
+}
