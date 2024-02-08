@@ -7,7 +7,7 @@ const SertchProducts = () => {
 
     const headleSubmit=(e)=>{
         e.preventDefault()
-        navigate(`/sertch?name=${query}`)
+        navigate(`/sertch?q=${query}`)
     } 
 
     return (
