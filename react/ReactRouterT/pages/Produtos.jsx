@@ -1,8 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
-const Produtos = ({produtos}) => {
+const Produtos = ({url}) => {
   let { id } = useParams()
-  const [produto] = useState(produtos.filter((e)=> e.id == id))
+  const [produto, setProduto] = useState('')
+
+  useEffect(()=>{
+    const getOne = async ()=>{
+      const response = await fetch(url)
+      const data = await response.json()
+      setProduto(data.filter((e)=> e.id == id))
+    }
+    getOne()
+  })
+
   return (
     <div>
          <div id='divProdutos'>
