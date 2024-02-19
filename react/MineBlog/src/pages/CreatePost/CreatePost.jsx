@@ -1,32 +1,94 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import styles from './CreateStyle.module.css'
-import { UseInsertDocument } from '../../hooks/useInsertDocument'
-import {useAuthValue} from '../../context/AuthContext'
+// import { useInsertDocument } from '../../hooks/useInsertDocument'
+// import {useAuthValue} from '../../context/AuthContext'
 
+import { useState } from "react";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
+import { useNavigate } from "react-router-dom";
+import { useAuthValue } from "../../context/AuthContext";
+// import Teste from '../../hooks/Teste'
 const CreatePost = () => {
-  const [title, setTitle] = useState('')
-  const [urlImg, setUrlImg] = useState('')
-  const [conteudo, setConteudo] = useState('')
-  const [tag, setTag] = useState([])
-  const [formError, setFormError] = useState('')
+  // const [title, setTitle] = useState('')
+  // const [urlImg, setUrlImg] = useState('')
+  // const [conteudo, setConteudo] = useState('')
+  // const [tag, setTag] = useState([])
+  // const [formError, setFormError] = useState('')
   
-  const {user} = useAuthValue() 
-  const {insertDocument, response} = UseInsertDocument('posts')
+  // const {user} = useAuthValue() 
+  // const {insertDocument, response} = useInsertDocument('posts')
 
-  const handleSubmit = (evt)=>{
-    evt.preventDefault()
-    setFormError('')
+  // const handleSubmit = (evt)=>{
+  //   evt.preventDefault()
+  //   setFormError('')
+
+  //   insertDocument({
+  //     title,
+  //     urlImg,
+  //     conteudo,
+  //     tag,
+  //     uid:user.uid,
+  //     createdBy: user.nome
+  //   })
+  //   console.log(response)
+  // }
+
+  const [title, setTitle] = useState("");
+  const [urlImg, setUrlImg] = useState("");
+  const [conteudo, setConteudo] = useState("");
+  const [tag, setTag] = useState([]);
+  const [formError, setFormError] = useState("");
+
+  const { user } = useAuthValue();
+
+  // const navigate = useNavigate();
+
+  const { insertDocument, response } = useInsertDocument("posts");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormError("");
+
+    // validate image
+    // try {
+    //   new URL(image);
+    // } catch (error) {
+    //   setFormError("A imagem precisa ser uma URL.");
+    // }
+
+    // // create tags array
+    // const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+
+    // // check values
+    // if (!title || !image || !tags || !body) {
+    //   setFormError("Por favor, preencha todos os campos!");
+    // }
+
+    // console.log(tagsArray);
+
+    console.log({
+      title,
+      urlImg,
+      conteudo,
+      tag,
+      uid: user.uid,
+      createdBy: user.displayName,
+    });
+
+    if(formError) return
 
     insertDocument({
       title,
       urlImg,
       conteudo,
       tag,
-      uid:user.uid,
-      createdBy: user.nome
-    })
-    console.log(response)
-  }
+      uid: user.uid,
+      createdBy: user.displayName
+    });
+
+    // redirect to home page
+    // navigate("/");
+  };
   return (
     <section>
       <h1>Criar post</h1>
@@ -68,6 +130,7 @@ const CreatePost = () => {
             {response.loading && <button disabled>...aguarde</button>}
             {response.error && <p className='pError'>{response.error}</p>}
       </form>
+       
     </section>
   )
 }
