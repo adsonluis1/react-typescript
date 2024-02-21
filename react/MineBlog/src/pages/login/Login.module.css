@@ -44,20 +44,4 @@ section h2{
     border: 1px solid red;
 }
 
-form > button{
-    background-color: rgb(112, 112, 112) !important;
-    box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.556) ;
-}
 
-nav > button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    font-weight: bolder;
-    font-size: 1.3em;
-}
-
-form > p {
-    margin-top: 20px;
-}

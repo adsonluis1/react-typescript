@@ -38,11 +38,11 @@ const Cadastrar = () => {
     },[authError])
 
     return (
-    <section>
+    <section className={style.section}>
         <h1>Cadastro</h1>
         <h2>Preencha com suas informações para efetuar o cadastro</h2>
 
-        <form onSubmit={(e)=> handleSubmit(e)}>
+        <form className={style.form} onSubmit={(e)=> handleSubmit(e)}>
             <label htmlFor="nome">Nome:</label>
             <input 
             type="text" 
@@ -80,7 +80,7 @@ const Cadastrar = () => {
             />
 
             
-            {!loading && <input type="submit" value="cadastrar" />}
+            {!loading && <input className={style.submit} type="submit" value="cadastrar" />}
             {loading && <button disabled>...aguarde</button>}
             {error && <p className='pError'>{error}</p>}
         </form>

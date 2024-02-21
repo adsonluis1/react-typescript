@@ -50,7 +50,7 @@ const CreatePost = () => {
     // navigate("/");
   };
   return (
-    <section>
+    <section className={styles.section}>
       <h1>Criar post</h1>
       <h2>Escreva sobre o que quiser e compartilhe o seu conhecimento</h2>
 
@@ -94,8 +94,8 @@ const CreatePost = () => {
         required
         />
 
-            {!response.loading && <input type="submit" value="Postar" />}
-            {response.loading && <button disabled>...aguarde</button>}
+            {!response.loading && <input className={styles.submit} type="submit" value="Postar" />}
+            {response.loading && <button className={styles.submit} disabled>...aguarde</button>}
             {Error && <p className='pError'>{Error}</p>}
             {response.error && <p className='pError'>{response.error}</p>}
       </form>
