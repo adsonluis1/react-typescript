@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
-import './Login.css'
+import style from './Login.module.css'
 import { useAuthenticator } from '../../hooks/useAuthenticator'
 
 const Login = () => {
@@ -28,11 +28,11 @@ const Login = () => {
     }
   },[authError])
     return (
-    <section>
+    <section className={style.section}>
         <h1>Entrar</h1>
         <h2>Faça o login para utilizar o sistema</h2>
 
-        <form onSubmit={(evt)=>handleSubmit(evt)}>
+        <form className={style.form} onSubmit={(evt)=>handleSubmit(evt)}>
             <label htmlFor='email'>Email:</label>
         
             <input 
@@ -51,8 +51,8 @@ const Login = () => {
                 id='senha'
                 />
             
-            {!loading && <input type="submit" value="Entrar" />}
-            {loading && <button disabled>...aguarde</button>}
+            {!loading && <input className={style.submit} type="submit" value="Entrar" />}
+            {loading && <button className={style.submit} disabled>...aguarde</button>}
             {error && <p className='pError'>{error}</p>}
             <p>Não tem login? <Link to={'/cadastro'}>Click aqui</Link></p>
         </form>

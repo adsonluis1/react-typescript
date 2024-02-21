@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthenticator } from '../../hooks/useAuthenticator'
+import style from './Login.module.css'
+
 const Cadastrar = () => {
     const [email,setEmail] = useState('')
     const [senha, setSenha] = useState('')

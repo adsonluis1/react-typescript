@@ -47,6 +47,7 @@ function App() {
           <Route path='/dashbord' element={user? <Dashbord/>: <Navigate to='/login'/>}/>
           <Route path='/posts/create' element={user? <CreatePost/>: <Navigate to='/login'/>}/>
         </Routes>
+        {/* <Home /> */}
       </AuthProviber>
     </>
   )
