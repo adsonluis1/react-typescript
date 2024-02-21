@@ -1,87 +1,47 @@
-// import { useState } from 'react'
 import styles from './CreateStyle.module.css'
-// import { useInsertDocument } from '../../hooks/useInsertDocument'
-// import {useAuthValue} from '../../context/AuthContext'
-
 import { useState } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
-// import Teste from '../../hooks/Teste'
+
 const CreatePost = () => {
-  // const [title, setTitle] = useState('')
-  // const [urlImg, setUrlImg] = useState('')
-  // const [conteudo, setConteudo] = useState('')
-  // const [tag, setTag] = useState([])
-  // const [formError, setFormError] = useState('')
-  
-  // const {user} = useAuthValue() 
-  // const {insertDocument, response} = useInsertDocument('posts')
-
-  // const handleSubmit = (evt)=>{
-  //   evt.preventDefault()
-  //   setFormError('')
-
-  //   insertDocument({
-  //     title,
-  //     urlImg,
-  //     conteudo,
-  //     tag,
-  //     uid:user.uid,
-  //     createdBy: user.nome
-  //   })
-  //   console.log(response)
-  // }
-
   const [title, setTitle] = useState("");
   const [urlImg, setUrlImg] = useState("");
   const [conteudo, setConteudo] = useState("");
   const [tag, setTag] = useState([]);
-  const [formError, setFormError] = useState("");
-
+  const [Error, setError] = useState("");
   const { user } = useAuthValue();
-
-  // const navigate = useNavigate();
+  let formError = ''
 
   const { insertDocument, response } = useInsertDocument("posts");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError("");
+    formError = "";
 
     // validate image
-    // try {
-    //   new URL(image);
-    // } catch (error) {
-    //   setFormError("A imagem precisa ser uma URL.");
-    // }
+    try {
+      new URL(urlImg);
+    } catch (error) {
+      formError = "A imagem precisa ser uma URL.";
+    }
 
     // // create tags array
-    // const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tag.split(",").map((tags) => tags.trim().toLowerCase());
 
     // // check values
-    // if (!title || !image || !tags || !body) {
-    //   setFormError("Por favor, preencha todos os campos!");
-    // }
+    if (!title || !urlImg || !tag || !conteudo) {
+      formError = "Por favor, preencha todos os campos!";
+    }
 
-    // console.log(tagsArray);
-
-    console.log({
-      title,
-      urlImg,
-      conteudo,
-      tag,
-      uid: user.uid,
-      createdBy: user.displayName,
-    });
-
+    setError(formError)
     if(formError) return
-
+    
     insertDocument({
       title,
       urlImg,
       conteudo,
-      tag,
+      tag: tagsArray,
       uid: user.uid,
       createdBy: user.displayName
     });
@@ -100,7 +60,9 @@ const CreatePost = () => {
         type="text" 
         id="title" 
         value={title}
-        onChange={(e)=> setTitle(e.target.value)}      
+        onChange={(e)=> setTitle(e.target.value)}
+        required     
+        placeholder='Pesne em um titulo para o post...' 
         />
 
         <label htmlFor="urlImg">URL da imagem:</label>
@@ -109,13 +71,17 @@ const CreatePost = () => {
         id="urlImg" 
         value={urlImg}
         onChange={(e)=> setUrlImg(e.target.value)}
+        required
+        placeholder='Url da imagem desejada'
         />
         <label htmlFor="conteudo">Conteúdo:</label>
         <input 
         type="text" 
         id="conteudo" 
         value={conteudo}
+        placeholder='Insira um conteúdo criativo...'
         onChange={(e)=>setConteudo(e.target.value)}
+        required
         />
 
         <label htmlFor="tag">Tags:</label>
@@ -123,11 +89,14 @@ const CreatePost = () => {
         type="text" 
         id="tag" 
         value={tag}
+        placeholder='Ex: js, web, programação'
         onChange={(e)=> setTag(e.target.value)}
+        required
         />
 
             {!response.loading && <input type="submit" value="Postar" />}
             {response.loading && <button disabled>...aguarde</button>}
+            {Error && <p className='pError'>{Error}</p>}
             {response.error && <p className='pError'>{response.error}</p>}
       </form>
        
