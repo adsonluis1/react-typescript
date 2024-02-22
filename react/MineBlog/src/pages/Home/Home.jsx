@@ -1,14 +1,22 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Home.module.css'
+import {useFetchDocuments} from '../../hooks/useFetchDocuments'
+import Posts from '../../components/Posts'
 
 const Home = () => {
   const [query, setQuery] = useState('')
-  const [posts] = useState([])
+  const {documents:posts, loading} = useFetchDocuments('posts')
   const navigate = useNavigate()
 
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+
+    if(query)
+    return navigate(`/search?q=${query}`)
+  }
   return (
-    <section>
+    <section onSubmit={handleSubmit} className={styles.section}>
        <h1>Veja os posts mais recentes</h1>
        <form className={styles.form}>
           <input 
@@ -19,12 +27,15 @@ const Home = () => {
           />
           <input className={styles.input} type="submit" value="Pesquisar" />
        </form>
-
-      {posts.length == 0 | !posts && 
-      <div>
-        <p>ainda não temos posts, seja o primeiro a criar</p>
-        <button onClick={()=> navigate('/posts/create')}>Crie seu post</button>
+        
+      {!posts && 
+      <div className={styles.aviso}>
+        <p>ainda não temos post 🥺, seja o primeiro a criar</p>
+        <button className={styles.btn} onClick={()=> navigate('/posts/create')}>Crie seu post</button>
       </div>}
+
+      {posts && <Posts posts={posts}/> }
+    
     </section>
   )
 }

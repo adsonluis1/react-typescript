@@ -15,8 +15,9 @@ input:focus{
 }
 
 nav > button{
-    background-color: transparent;
+    background-color: rgb(205, 255, 255);
     border: none;
+    border-radius: 8px;
     cursor: pointer;
     padding: 8px;
     font-weight: bolder;

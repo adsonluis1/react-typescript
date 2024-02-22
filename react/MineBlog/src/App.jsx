@@ -11,6 +11,7 @@ import Dashbord from './pages/dashbord/Dashbord.jsx'
 import CreatePost from './pages/CreatePost/CreatePost.jsx'
 import Home from './pages/Home/Home.jsx'
 import About from './pages/about/About.jsx'
+import Searchs from './pages/search/Searchs.jsx'
 
 function App() {
   const navigate = useNavigate('')
@@ -40,14 +41,14 @@ function App() {
         </header>
 
         <Routes>
-          <Route path='/home' element={<Home />}/>
+          <Route path='/' element={<Home />}/>
+          <Route path='/search' element={<Searchs />}/>
           <Route path='/login' element={!user? <Login/>: <Navigate to='/'/>}/>
           <Route path='/cadastro' element={!user? <Cadastrar/>: <Navigate to='/'/>} />
           <Route path='/sobre' element={<About />} />
           <Route path='/dashbord' element={user? <Dashbord/>: <Navigate to='/login'/>}/>
           <Route path='/posts/create' element={user? <CreatePost/>: <Navigate to='/login'/>}/>
         </Routes>
-        {/* <Home /> */}
       </AuthProviber>
     </>
   )
