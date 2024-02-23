@@ -1,8 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthenticator } from '../hooks/useAuthenticator'
 import { useAuthValue } from '../context/AuthContext'
-
 
 const NavBar = () => {
   const {user} = useAuthValue()

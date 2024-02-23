@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import  useQuery  from '../../hooks/useQuery'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Posts from '../../components/Posts'
 import styles from './Search.module.css'
 

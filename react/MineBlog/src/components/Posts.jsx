@@ -1,6 +1,8 @@
 import style from './Posts.module.css'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Posts = ({posts}) => {
+  const navigate = useNavigate()  
   return (
     <section>
         {posts.map((e)=>[
@@ -11,7 +13,7 @@ const Posts = ({posts}) => {
                 <div className={style.divTags}>
                 {e.tag.map((tags)=> <span key={Math.floor(Math.random()*1000000000)}> <b>#</b>{tags}</span>)}
                 </div>
-                <button className={style.btn}>Ver</button>
+                <button onClick={()=> navigate(`/post/${e.id}`)} className={style.btn}>Ver</button>
             </div>
         ])}
     </section>
