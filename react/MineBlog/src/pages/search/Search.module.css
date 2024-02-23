@@ -1,0 +1,24 @@
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filha{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    background-color: rgb(0, 193, 0);
+    border: none;
+    padding: 8px;
+    margin-top: 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bolder ;
+    cursor: pointer;
+}
