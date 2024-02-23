@@ -14,6 +14,7 @@ const CreatePost = () => {
   let formError = ''
 
   const { insertDocument, response } = useInsertDocument("posts");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ const CreatePost = () => {
     });
 
     // redirect to home page
-    // navigate("/");
+    navigate("/");
   };
   return (
     <section className={styles.section}>
