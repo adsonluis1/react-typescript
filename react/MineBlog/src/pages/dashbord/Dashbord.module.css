@@ -1,0 +1,72 @@
+.section{
+    padding: 10px;
+}
+
+/* div sem posts*/
+.div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    background-color: rgb(0, 193, 0);
+    border: none;
+    padding: 8px;
+    margin-top: 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bolder ;
+    cursor: pointer
+}
+
+/* div com posts*/
+.divTitle{
+    text-align: center;
+}
+
+.divTitle > h1{
+    font-size: 2.3em;
+}
+
+.divTitle > h2{
+    font-size: 1.6em;
+}
+
+.pMain{
+    font-weight: bold;
+    font-size: 1.3em;
+    border-bottom: 4px solid rgb(205, 255, 255);
+}
+
+.divNav{
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+}
+
+.divP{
+    width: 50%;
+}
+
+.nav{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    width: 50%;
+}
+
+.nav > button{
+    background-color: rgb(205, 255, 255);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: bolder;
+}
+
+.delete:hover{
+    transition: .5s;
+    background-color: rgb(255, 104, 104);
+}
