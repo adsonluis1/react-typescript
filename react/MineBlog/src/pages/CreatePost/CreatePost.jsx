@@ -63,7 +63,7 @@ const CreatePost = () => {
         value={title}
         onChange={(e)=> setTitle(e.target.value)}
         required     
-        placeholder='Pesne em um titulo para o post...' 
+        placeholder='Pense em um titulo para o post...' 
         />
 
         <label htmlFor="urlImg">URL da imagem:</label>

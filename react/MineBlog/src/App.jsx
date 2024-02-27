@@ -14,6 +14,7 @@ import Home from './pages/Home/Home.jsx'
 import About from './pages/about/About.jsx'
 import Searchs from './pages/search/Searchs.jsx'
 import PostP from './pages/posts/PostP.jsx'
+import EditPost from './pages/editPost/EditPost.jsx'
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path='/search' element={<Searchs />}/>
             <Route path='/login' element={!user? <Login/>: <Navigate to='/'/>}/>
             <Route path='/cadastro' element={!user? <Cadastrar/>: <Navigate to='/'/>} />
+            <Route path='/post/edit/:id' element={!user? <Login/>: <EditPost />}/>
             <Route path='/sobre' element={<About />} />
             <Route path='/dashbord' element={user? <Dashbord/>: <Navigate to='/login'/>}/>
             <Route path='/posts/create' element={user? <CreatePost/>: <Navigate to='/login'/>}/>

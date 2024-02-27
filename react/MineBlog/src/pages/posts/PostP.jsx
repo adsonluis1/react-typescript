@@ -24,7 +24,7 @@ const PostP = () => {
                  <img className={styles.img} src={post.urlImg} alt={`img de ${post.title}`}/>
                  <p className={styles.descricao}>{post.conteudo}</p>
                  <p className={styles.p}>Criado por: {post.createdBy}</p>
-                 <div>
+                 <div key={Math.floor(Math.random()*100000000)}>
                      {post.tag.map(e => <span> <b>#</b>{e}</span>)}
                  </div>
            </div>}

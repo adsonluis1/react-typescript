@@ -41,7 +41,7 @@ const Dashbord = () => {
  
                <nav className={styles.nav}>
                  <button onClick={()=> navigate(`/post/${post.id}`)}>Ver</button>
-                 <button>Editar</button>
+                 <button onClick={()=> navigate(`/post/edit/${post.id}`)}>Editar</button>
                  <button className={styles.delete} onClick={()=> deleteDocument(post.id)}>Excluir</button>
                </nav>
            </div>
