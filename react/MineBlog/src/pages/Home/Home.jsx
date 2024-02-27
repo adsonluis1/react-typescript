@@ -13,7 +13,7 @@ const Home = () => {
     e.preventDefault()
 
     if(query)
-    return navigate(`/search?q=${query}`)
+    return navigate(`/search?q=${query.toLowerCase()}`)
   }
   return (
     <section onSubmit={handleSubmit} className={styles.section}>

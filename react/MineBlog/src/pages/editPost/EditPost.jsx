@@ -15,11 +15,21 @@ const EditPost = () => {
     const { user } = useAuthValue();
     const {id} = useParams()
     let formError = ''
+
     const {document:post, error, loading} = useFetchDocument('posts', id)
     
     const { editDocument, response } = useEditingDoc("posts");
 
     const navigate = useNavigate()
+    // vai voltar os inputs para as informações originais
+    const reset = ()=>{   
+      if(post){
+        setTitle(post.title)
+        setUrlImg(post.urlImg)
+        setConteudo(post.conteudo)
+        setTag(post.tag.join(', '))
+        }
+    }
     const handleSubmit = (e) => {
       e.preventDefault();
       formError = "";
@@ -57,14 +67,8 @@ const EditPost = () => {
       navigate("/dashbord");
     }
 
-    useEffect(()=>{
-        if(post){
-        setTitle(post.title)
-        setUrlImg(post.urlImg)
-        setConteudo(post.conteudo)
-        setTag(post.tag.join(', '))
-        }
-    },[post])
+    useEffect(reset,[post])
+
     return (
         <section className={styles.section}>
         <h1>Editando post</h1>
@@ -109,11 +113,13 @@ const EditPost = () => {
           onChange={(e)=> setTag(e.target.value)}
           required
           />
-  
-              {!response.loading && <input className={styles.submit} type="submit" value="Postar" />}
-              {response.loading && <button className={styles.submit} disabled>...aguarde</button>}
-              {Error && <p className='pError'>{Error}</p>}
-              {response.error && <p className='pError'>{response.error}</p>}
+
+              {response.error && <p className={styles.pError}>{response.error}</p>}
+              {Error && <p className={styles.pError}>{Error}</p>}
+              {!response.loading && <input className={styles.submit} type="submit" value="Editar" />}
+              {!response.loading && <input className={styles.btn} onClick={()=> reset()} type="button" value="Restaurar" />}
+              {response.loading && <button disabled>...aguarde</button>}
+              
         </form>
          
       </section>

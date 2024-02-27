@@ -94,11 +94,11 @@ const CreatePost = () => {
         onChange={(e)=> setTag(e.target.value)}
         required
         />
-
+            {response.error && <p className={styles.pError}>{response.error}</p>}
+            {Error && <p className={styles.pError}>{Error}</p>}
             {!response.loading && <input className={styles.submit} type="submit" value="Postar" />}
-            {response.loading && <button className={styles.submit} disabled>...aguarde</button>}
-            {Error && <p className='pError'>{Error}</p>}
-            {response.error && <p className='pError'>{response.error}</p>}
+            {response.loading && <button disabled>...aguarde</button>}
+           
       </form>
        
     </section>

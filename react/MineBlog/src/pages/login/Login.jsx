@@ -40,6 +40,7 @@ const Login = () => {
             value={email}
             onChange={(e)=> setEmail(e.target.value)}
             id='email'
+            required
             />
 
             <label htmlFor='senha'>Senha:</label>
@@ -49,11 +50,15 @@ const Login = () => {
                 value={senha}
                 onChange={(e)=> setSenha(e.target.value)}
                 id='senha'
+                required
                 />
-            
-            {!loading && <input className={style.submit} type="submit" value="Entrar" />}
-            {loading && <button className={style.submit} disabled>...aguarde</button>}
-            {error && <p className='pError'>{error}</p>}
+
+            <nav>
+              {error && <p className={style.pError}>{error}</p>}
+              {!loading && <input className={style.submit} type="submit" value="Entrar" />}
+              {loading && <button  disabled>...aguarde</button>}
+            </nav>
+           
             <p>Não tem login? <Link to={'/cadastro'}>Click aqui</Link></p>
         </form>
     </section>

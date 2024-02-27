@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useAuthenticator } from '../../hooks/useAuthenticator'
 import style from './Cadastrar.module.css'
+//hooks
+import { useEffect, useState } from 'react'
+import { useAuthenticator } from '../../hooks/useAuthenticator'
+
 
 const Cadastrar = () => {
     const [email,setEmail] = useState('')
@@ -79,10 +81,10 @@ const Cadastrar = () => {
             required
             />
 
-            
+            {error && <p className={style.error}>{error}</p>}
             {!loading && <input className={style.submit} type="submit" value="cadastrar" />}
             {loading && <button disabled>...aguarde</button>}
-            {error && <p className='pError'>{error}</p>}
+           
         </form>
     
     </section>

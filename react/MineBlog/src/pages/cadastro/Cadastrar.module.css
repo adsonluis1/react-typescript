@@ -14,11 +14,21 @@
 
 .submit{
     background-color: rgb(0, 193, 0);
-    margin: auto;
     width: 100px;
+    margin: auto;
     margin-top: 30px;
     border-radius: 8px;
     color: white;
     font-weight: bolder ;
     cursor: pointer;
+}
+
+.error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(249, 68, 68, 0.653);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid red;
 }

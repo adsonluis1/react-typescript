@@ -29,6 +29,12 @@
    margin-top: 20px;
 }
 
+.divBtn{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .btn{
     margin-top: 20px;
     padding: 4px;

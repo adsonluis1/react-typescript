@@ -24,3 +24,12 @@
     cursor: pointer;
 }
 
+.pError{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(249, 68, 68, 0.653);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid red;
+}

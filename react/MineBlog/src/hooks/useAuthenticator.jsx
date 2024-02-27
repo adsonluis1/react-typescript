@@ -44,19 +44,17 @@ export const useAuthenticator = () => {
 
         } catch (error) {
             
-            console.log(error.message)
-            console.log(typeof error.message)
-            
             let systemErrorMessage
-
-            if(error.message.includes('password')){
-                systemErrorMessage = 'A senha precisa conter pelo menos 6 caracteres'
-            }else if(error.massage.includes('email-already')){
-                systemErrorMessage = 'e-mail já cadastrado'
-            }else{
+            console.log(error.message)
+            if(error.message.split(' ').includes('Password')){
+                systemErrorMessage = 'Senha precisa de no minimo 6 caracteres'
+            }else if(error.message.split(' ').includes('(auth/email-already-in-use).')){
+                systemErrorMessage = 'Email já registrado'
+            }
+            else{
                 systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde'
             }
-
+           
             setError(systemErrorMessage)
         }
         
@@ -77,9 +75,8 @@ export const useAuthenticator = () => {
         try {
             await signInWithEmailAndPassword(auth,data.email, data.senha)
         } catch (error) {
-            
+            console.log(error.message)
             let systemErrorMessage
-            console.log(error)
             if(error.message.includes('auth/invalid-credential')){
                 systemErrorMessage = 'Senha ou Email incorreto'
             }else{
