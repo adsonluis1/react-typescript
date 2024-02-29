@@ -10,7 +10,7 @@ const HookUseMemo = () => {
 
     {useEffect(()=>{
         console.log('numero alterado')
-    },[text])}
+    },[numerosPremiados])}
 
     return (
     <div>
