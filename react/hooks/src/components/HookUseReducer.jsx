@@ -39,6 +39,7 @@ const HookUseReducer = () => {
     const [reducer, dispatchReducer] = useReducer(reducerSwitch, objReducer)
     return (
     <div>
+        <h1>Use Reducer</h1>
         <form onSubmit={handleSubmit}>
             <input 
             type="text"
