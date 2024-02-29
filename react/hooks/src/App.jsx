@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import {SomeContext } from './components/HookUseContext'
 import { useContext } from 'react'
+import Testes from './pages/Testes'
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <NavLink to={'/'}>Home</NavLink>
         <br/>
         <NavLink to={'/about'}>About</NavLink>
-
+        <br />
+        <NavLink to={'/teste'}>Testes</NavLink>
      
         
         
@@ -25,6 +27,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About />}/>
+        <Route path='/teste' element={<Testes />}/>
       </Routes>
      
       </section>
