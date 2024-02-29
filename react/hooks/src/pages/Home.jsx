@@ -1,3 +1,4 @@
+import HookUseCallback from '../components/HookUseCallback'
 import HookUseReducer from '../components/HookUseReducer'
 import HookUseRef from '../components/HookUseRef'
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <HookUseReducer />
       <HookUseRef />
+      <HookUseCallback />
     </div>
   )
 }
