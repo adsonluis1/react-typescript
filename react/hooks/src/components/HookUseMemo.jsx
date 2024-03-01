@@ -20,6 +20,7 @@ const HookUseMemo = () => {
         type="text"
         value={text}
         onChange={(e)=>{setText(e.target.value)}}
+        placeholder='digite algum numero'
         />
 
         {numerosPremiados.includes(text)&& <p>Numero premiado</p>}
