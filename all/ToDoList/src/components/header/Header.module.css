@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(76, 76, 76);
+    color: blueviolet;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
