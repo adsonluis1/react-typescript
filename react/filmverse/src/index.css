@@ -1,1 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+html,body{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+header a {
+    text-decoration: none;
+    color: rgb(255, 255, 108);
+    cursor: pointer;
+}

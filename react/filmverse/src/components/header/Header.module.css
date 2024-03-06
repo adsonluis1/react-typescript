@@ -1,0 +1,10 @@
+header{
+    background-color: rgb(15, 15, 15);
+    display: flex;
+    padding: 10px;
+}
+
+h1{
+    width: 50%;
+    margin-left: 3%;
+}
