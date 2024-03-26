@@ -5,7 +5,7 @@ import About from './pages/About'
 import {SomeContext } from './components/HookUseContext'
 import { useContext } from 'react'
 import Testes from './pages/Testes'
-
+import UseMemo from './pages/UseCallback'
 
 function App() {
   
@@ -20,6 +20,8 @@ function App() {
         <NavLink to={'/about'}>About</NavLink>
         <br />
         <NavLink to={'/teste'}>Testes</NavLink>
+        <br />
+        <NavLink to={'/useCallback'}>useCallback</NavLink>
      
         
         
@@ -28,6 +30,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/teste' element={<Testes />}/>
+        <Route path='/useCallback' element={<UseMemo />}/>
       </Routes>
      
       </section>
