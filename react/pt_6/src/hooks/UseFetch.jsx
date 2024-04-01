@@ -5,27 +5,53 @@ import { useEffect } from 'react'
 const UseFetch = (url, options) => {
     const [result, setResult] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [charge, setCharge] = useState(false)
+    const refUrl = useRef()
+    const refOptions = useRef()
 
     useEffect(()=>{
-        console.log('useEffect ativado', Date.now().toLocaleString('pt-br'))
+        let verify = false
+        if(refUrl.current != url){
+            refUrl.current = url
+            verify = true
+        }
+
+        if(!JSON.stringify(refOptions.current) === JSON.stringify(options)){
+            refOptions.current = options
+            verify = true
+        }
+        if(verify)
+            setCharge((s)=>!s )
+
+    },[url, options])
+
+    useEffect(()=>{
+        let wait = false
+        console.log('useEffect ativado', new Date().toLocaleString('pt-br'))
         const handleFetch = async ()=>{
             setLoading(true)
             try {
-                const response = await fetch(url, options)
+                const response = await fetch(refUrl.current, refOptions.current)
                 const data = await response.json()
+                if(!wait){
                 setResult(data)
                 setLoading(false)
+                }
             } catch (error) {
-                setLoading(false)
+                if(!wait){
+                    setLoading(false)
+                }
                 throw error
             }
         }
 
+        handleFetch()
+        
         return () => {
-            handleFetch() 
+            wait = true    
         }
                
-    },[])
+    },[charge])
 
     
     return [result, loading]
