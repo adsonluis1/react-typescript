@@ -33,7 +33,7 @@ const PosterFocus = () => {
     <section>
         {focusMovie.length >= 1 && focusMovie.map((filme)=>[
             <div className={style.div} key={filme.id}>
-            <img src={filmesIMG + filme.poster_path} alt='Poster do filme' />
+            <img className={style.img} src={filmesIMG + filme.poster_path} alt='Poster do filme' />
             <div className={style.info}>
                 <h2>{filme.title}</h2>
                 <h3>⭐{filme.vote_average.toFixed(2)}</h3>

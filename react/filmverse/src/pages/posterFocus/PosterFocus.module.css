@@ -1,20 +1,26 @@
 section{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .div{
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
-    gap: 20px;
-    width: 500px;
     text-align: justify;
+    width: 80%;
+    gap: 20px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.img{
+    width: 100%;
+    max-width: 500px;
 }
 
 .info{
