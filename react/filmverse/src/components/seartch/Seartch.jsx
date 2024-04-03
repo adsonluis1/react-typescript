@@ -17,7 +17,7 @@ const Seartch = () => {
     <form onSubmit={handleSubmit}>
         <input 
         type="text"
-        placeholder='Digite o nome do filme que você procura'
+        placeholder='Filme que deseja...'
         value={query}
         onChange={(e)=> setQuery(e.target.value)}
         />

@@ -12,7 +12,7 @@ const Poster = ({topFilmes}) => {
     {topFilmes && topFilmes.length > 0 && 
     topFilmes.map((filme)=>[
         <div className={style.div} key={filme.id}>
-            <img src={filmesIMG + filme.poster_path} alt='Poster do filme' />
+            <img src={filmesIMG + filme.poster_path} alt={`Poster do filme ${filme.title}`}  />
             <div className={style.info}>
                 <h2>{filme.title}</h2>
                 <h3>⭐{filme.vote_average.toFixed(2)}</h3>

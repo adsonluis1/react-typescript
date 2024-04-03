@@ -6,7 +6,7 @@ import style from './Header.module.css'
 const Header = () => {
   return (
     <header>
-        <h1><NavLink to={'/'}>FilmVerse</NavLink></h1>
+        <h1 className={style.h1}><NavLink to={'/'}>FilmVerse</NavLink></h1>
         <Seartch/>
     </header>
   )

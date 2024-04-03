@@ -27,7 +27,6 @@ const Home = () => {
     getFilmes()
     },[])
 
-  console.log(topFilmes)
     return (
     <main>
        <Poster topFilmes={topFilmes}/>
