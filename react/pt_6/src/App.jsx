@@ -1,48 +1,21 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import UseFetch from './hooks/UseFetch'
+import UseMediaQuery from './hooks/UseMediaQuery'
+import HomeM from './pages/mobile/Home/HomeM'
+import HomeP from './pages/pc/Home/HomeP'
+
+
 
 
 function App() {
-  const [postId, setPostId] = useState('')
-  const [result, loading] =  UseFetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, 
-  {headers: {
-    abc: '1' + postId,
-  },
-})
-
-  useEffect(() => {
-    console.log('ID do post', postId);
-  }, [postId]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  const handleClick = (id) => {
-    setPostId(id);
-  };
-
-  if (!loading && result) {
-    // 1
-    return (
-      <div>
-        {result?.length > 0 ? (
-          result.map((p) => (
-            <div key={`post-${p.id}`} onClick={() => handleClick(p.id)}>
-              <p>{p.title}</p>
-            </div>
-          ))
-        ) : (
-          <div onClick={() => handleClick('')}>
-            <p>{result.title}</p>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  return <h1>Oi</h1>;
+  const typeScreen = UseMediaQuery()
+  
+  return (
+    <>
+    {typeScreen !='pc' && typeScreen !='notbook' && <HomeM />}
+    {typeScreen =='pc' || typeScreen =='notbook' && <HomeP />}
+    </>
+  )
 }
 
 export default App
