@@ -1,0 +1,31 @@
+.estatico{
+    height: 100%;
+    overflow: hidden;
+    background-color: aqua;
+}
+
+.section {
+    position: absolute;
+    color: white;
+    width: 60%;
+    height: 100vh;
+    padding: 20px;
+    background-color: rgba(67, 67, 67, 0.611);
+}
+
+.divBtn {
+    margin-bottom: 40px;
+    font-size: 1.4em;
+    font-weight: bolder;
+}
+
+.divBtn p {
+    cursor: pointer;
+}
+
+.divAcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
