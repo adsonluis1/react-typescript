@@ -1,0 +1,20 @@
+.header {
+    background-color: gray;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.header li {
+    list-style: none;
+}
+
+.header ul {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+    font-size: 1.4em;
+    gap: 20px;
+}
