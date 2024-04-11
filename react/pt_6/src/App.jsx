@@ -13,7 +13,7 @@ function App() {
   return (
     <>
     {typeScreen !='pc' && typeScreen !='notbook' && <HomeM />}
-    {typeScreen =='pc' || typeScreen =='notbook' && <HomeP />}
+    {typeScreen !='celular' && typeScreen !='tablet' && <HomeP />}
     </>
   )
 }
