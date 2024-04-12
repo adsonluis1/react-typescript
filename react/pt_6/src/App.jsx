@@ -5,13 +5,13 @@ import HomeM from './pages/mobile/Home/HomeM'
 import HomeP from './pages/pc/Home/HomeP'
 import Count from './components/Count'
 import ErrorBoundary from './components/ErrorBoudary'
+import PadraoCompound from './components/PadraoCompound'
 
 
 
 
 function App() {
-  const typeScreen = false
-  // UseMediaQuery()
+  const typeScreen = false // UseMediaQuery
   
   return (
     <>
@@ -23,6 +23,7 @@ function App() {
       <Count />
     {typeScreen && typeScreen !='pc' && typeScreen !='notbook' && <HomeM />}
     {typeScreen && typeScreen !='celular' && typeScreen !='tablet' && <HomeP />}
+    <PadraoCompound />
     </>
   )
 }
