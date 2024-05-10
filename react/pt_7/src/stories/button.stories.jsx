@@ -1,19 +1,28 @@
+import {useArgs} from '@storybook/preview-api'
 import Button from '../style/components/button.style';
 
 export default {
-    component:Button
-}
-
-export const FirstStory = {
+    component:Button,
     args:{
         $select:true,
-        label:'Home'
+    },
+    render:function Render(args){
+        const [{$select }, updateArgs] = useArgs()
+
+        function onChange () {
+            updateArgs({$select :!$select })
+        }
+
+        return <Button  {...args} onClick={()=>onChange()} $select={$select} >Home</Button>
     }
 }
 
-export const SecondStory = {
+export const ClikedStory = {
+   
+}
+
+export const NoClickedStory = {
     args:{
-        $select:false,
-        label:'Home'
+        $select:false
     }
 }
