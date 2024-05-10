@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Nav } from '../style/components/Nav.style'
 import Button from '../style/components/button.style'
 
-const Menu = () => {
+const Menu = ({backgroudColor}) => {
     const [select, setSelect] = useState('')
    
   return (
