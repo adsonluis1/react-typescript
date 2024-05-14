@@ -3,6 +3,7 @@ import { Container } from "../App"
 import Menu from "./Menu"
 
 
+
 const Div = styled.div`
   background: ${({theme})=> theme.color.secondary};
   width: 100%;
@@ -27,7 +28,7 @@ const Header = () => {
                 </Div>
             ])}
       </Container>
-      <Menu />
+      <Menu/>
     </header>
   )
 }
