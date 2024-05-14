@@ -5,7 +5,7 @@ export const Nav = styled.nav`
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: ${({backgroundColor})=> backgroundColor};
+    background-color: ${({$backgroundColor})=> $backgroundColor};
     height: 50px;
     width: 100%;
     margin-bottom: 10px;
