@@ -5,11 +5,7 @@ export default {
 }
 
 export const FirstStorys = {
-    argTypes: {
-        backgroundColor: { control: 'color' }
-      },
-    
     args:{
-        backgroundColor:'#ff0303'
+        $backgroundColor:'#ff0303'
     }
 }
