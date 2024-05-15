@@ -12,7 +12,7 @@ const Div = styled.div`
 
 const Title = styled.h1`
   color: ${({theme})=> theme.color.main};
-  font-size:1.5em;
+  font-size: clamp(1.5em,5vw,2.5em);
   text-align: center;
   font-family: ${({theme})=> theme.fontFamily};
   font-weight: bolder;
@@ -24,7 +24,7 @@ const Header = () => {
          <Container>
             {marcas.map((marca,index)=> [
                 <Div key={index}>
-                    <Title>{marca}</Title>
+                    <Title key={index}>{marca}</Title>
                 </Div>
             ])}
       </Container>
