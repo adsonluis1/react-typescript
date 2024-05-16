@@ -2,7 +2,31 @@ import styled, { css } from "styled-components";
 import { device } from "../../style/breakpoints";
 import Button from "../../style/components/button.style";
 export const HeaderMediaStyled = styled.nav`
-    ${({$clicked})=>{
+    ${()=>{
+            return css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: grey;
+            padding: 8px;
+            `
+        
+    }}
+   
+    & svg{
+        display: none;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+
+    & #exit {
+        display:none;
+    }
+
+    @media ${device.sm}{
+        ${({$clicked})=>{
         if($clicked == 'true'){
             return css`
             position: fixed;
@@ -17,6 +41,11 @@ export const HeaderMediaStyled = styled.nav`
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: #ffffff86;
+
+            body{
+                
+            }
+
             & svg{
                 display: none !important;
             }
@@ -36,31 +65,7 @@ export const HeaderMediaStyled = styled.nav`
             `
         }
     }}
-    ${({$clicked})=>{
-        if($clicked == 'false'){
-            return css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: grey;
-            padding: 8px;
-        `
-        }
-    }}
-   
-    & svg{
-        display: none;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-    }
-
-    & #exit {
-        display:none;
-    }
-
-    @media ${device.sm}{
+        
         & button {
             display: none;
         }
