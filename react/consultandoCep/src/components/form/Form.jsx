@@ -1,18 +1,19 @@
 import * as Z from "zod"
 import {useForm} from 'react-hook-form'
 import {zodResolver} from "@hookform/resolvers/zod"
-import { useCallback, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import * as S from './Form.styled'
 
 const Form = () => {
-
+  const [search, setSearch] = useState('')
   const schema = Z.object({
     address: Z.object({
       cep: Z.string().max(8,"O cep precisa ter 8 digitos").min(8,"O cep precisa ter 8 digitos"),
       cidade: Z.string(),
       bairro: Z.string(),
-      estado: Z.string()
+      estado: Z.string(),
+      rua:Z.string()
     })
   })
   const {register, handleSubmit, formState:{ errors }, watch,setValue} = useForm({
@@ -24,28 +25,38 @@ const Form = () => {
         cep:'',
         cidade:'',
         bairro:'',
-        estado:''
+        estado:'',
+        rua:''
     }}
   })
 
   watch(async ({address})=> {
     if(address.cep.length !== 8) return
-    const jsonData = await fetch(`https://viacep.com.br/ws/${address.cep}/json/`)
-    const data = await jsonData.json()
-    useCallback(handleSetData(data),[address.cep])
-    console.log(data)
+    setSearch(address.cep)
   })
 
+  useEffect(()=>{
+    const getData= async ()=>{
+      try {
+        const jsonData = await fetch(`https://viacep.com.br/ws/${search}/json/`)
+        const data = await jsonData.json()
+        console.log(data)
+        handleSetData(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    if(search.length === 8)
+      getData()
+  },[search])
 
   const handleSetData = (data)=>{
     setValue('address.cidade', data.localidade)
     setValue('address.bairro', data.bairro)
-    setValue('address.estado', data.estado)
+    setValue('address.estado', data.uf)
+    setValue('address.rua', data.logradouro)
   }
 
-  // useEffect(()=>{
-  //   handleSetData(data)
-  // },[])
 
   const handleSubmitData = (data)=>{
     console.log(data)
@@ -56,7 +67,7 @@ const Form = () => {
     <S.Form onSubmit={handleSubmit(handleSubmitData)}>
         <S.Label>
             Cep
-            <S.Input onChange={((e)=> setValue('address.cep',e.target.value))} placeholder="ex: 0000-000" {...register('address.cep')} type='number'/>
+            <S.Input onChange={((e)=> setValue('address.cep',e.target.value))} placeholder="ex: 00000000" {...register('address.cep')} type='number'/>
           </S.Label>
           {errors.address?.cep &&
             <S.Erro>{errors.address.cep.message}</S.Erro>
@@ -73,7 +84,10 @@ const Form = () => {
             Bairro
             <S.Input {...register('address.bairro')} type='text'/>
           </S.Label>
-          
+          <S.Label>
+            Rua
+            <S.Input {...register('address.rua')} type="text"/>
+          </S.Label>
           <S.Input type='submit' />
     </S.Form>
   )
